@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZentraFuel (ZFUEL) - The Future is Fuel</title>
+    <meta name="description" content="ZentraFuel is a utility token built on Base blockchain with a fixed supply of 1 million tokens.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple-dark: #1a0a2e;
+            --purple-mid: #2d1b4e;
+            --purple-light: #8b5cf6;
+            --cyan: #22d3ee;
+            --green: #22c55e;
+            --white: #ffffff;
+            --gray: #9ca3af;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, var(--purple-dark) 50%, #0a0a0a 100%);
+            color: var(--white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .buy-btn {
+            background: linear-gradient(135deg, var(--purple-light), #6366f1);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .buy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid var(--green);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        h1 span {
+            background: linear-gradient(135deg, var(--purple-light) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--purple-light), #6366f1);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--purple-light);
+            color: var(--purple-light);
+            padding: 14px 38px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--purple-light);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .stat-card {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(180deg, rgba(45, 27, 78, 0.5) 0%, rgba(26, 10, 46, 0.5) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--purple-light);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Token Address Section */
+        .token-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .token-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--purple-light);
+            border-radius: 24px;
+            padding: 40px;
+        }
+
+        .token-label {
+            color: var(--purple-light);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .token-address {
+            font-family: monospace;
+            font-size: 16px;
+            color: var(--cyan);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            word-break: break-all;
+            margin-bottom: 24px;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: var(--cyan);
+            color: #0a0a0a;
+        }
+
+        /* How to Buy */
+        .how-to-buy {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            display: grid;
+            gap: 30px;
+        }
+
+        .step {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            background: rgba(45, 27, 78, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .step-content p {
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .footer-tagline {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(139, 92, 246, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--purple-light);
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 20px 40px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <header>
+        <div class="logo">
+            <div class="logo-icon">ZF</div>
+            <span class="logo-text">ZentraFuel</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#how-to-buy">How to Buy</a>
+        </nav>
+        <a href="https://app.uniswap.org/swap?chain=base&outputCurrency=0x2d04456329Bb14B54471062092DDA942EF44A22E" class="buy-btn" target="_blank">Buy ZFUEL</a>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Live on Base Blockchain
+            </div>
+            <h1>The Future<br>is <span>Fuel</span></h1>
+            <p class="hero-subtitle">
+                ZentraFuel (ZFUEL) is a utility token with a fixed supply of 1 million tokens. 
+                Built on Coinbase's Base blockchain for ultra-low fees and lightning-fast transactions.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://app.uniswap.org/swap?chain=base&outputCurrency=0x2d04456329Bb14B54471062092DDA942EF44A22E" class="btn-primary" target="_blank">
+                    Buy ZFUEL Now
+                </a>
+                <a href="https://basescan.org/token/0x2d04456329Bb14B54471062092DDA942EF44A22E" class="btn-secondary" target="_blank">
+                    View Contract
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <div class="stat-value">1M</div>
+            <div class="stat-label">Total Supply</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">BASE</div>
+            <div class="stat-label">Blockchain</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">&lt;$0.01</div>
+            <div class="stat-label">Transaction Fee</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value">LIVE</div>
+            <div class="stat-label">Status</div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Why ZentraFuel?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">1M</div>
+                <h3>Fixed Supply</h3>
+                <p>Only 1 million ZFUEL tokens will ever exist. No inflation, no additional minting. Scarcity by design.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">B</div>
+                <h3>Built on Base</h3>
+                <p>Powered by Coinbase's Layer 2 blockchain. Enjoy Ethereum security with fraction-of-a-penny fees.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">D</div>
+                <h3>Decentralized</h3>
+                <p>Trade freely on Uniswap. No centralized exchange needed. You control your tokens.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">S</div>
+                <h3>Staking Ready</h3>
+                <p>Staking smart contract deployed. Lock your tokens and earn rewards from the ecosystem.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">F</div>
+                <h3>Fast Transactions</h3>
+                <p>Base blockchain processes transactions in seconds. No more waiting for confirmations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">T</div>
+                <h3>Transparent</h3>
+                <p>All transactions visible on Basescan. Open source. Nothing hidden.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="token-section" id="tokenomics">
+        <h2 class="section-title">Token Contract</h2>
+        <div class="token-box">
+            <div class="token-label">ZFUEL Token Address</div>
+            <div class="token-address" id="tokenAddress">0x2d04456329Bb14B54471062092DDA942EF44A22E</div>
+            <button class="copy-btn" onclick="copyAddress()">Copy Address</button>
+        </div>
+    </section>
+
+    <section class="how-to-buy" id="how-to-buy">
+        <h2 class="section-title">How to Buy ZFUEL</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Get a Wallet</h3>
+                    <p>Download MetaMask or Coinbase Wallet. These are free browser extensions or mobile apps that let you store crypto.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Add Base Network</h3>
+                    <p>Add the Base network to your wallet. Chain ID: 8453. Or use Coinbase Wallet which has it built-in.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Get ETH on Base</h3>
+                    <p>Buy ETH and bridge it to Base, or buy directly on Base through Coinbase. You need ETH to pay for gas fees.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Swap for ZFUEL</h3>
+                    <p>Go to Uniswap, connect your wallet, paste the ZFUEL token address, and swap your ETH for ZFUEL!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">ZentraFuel</div>
+        <p class="footer-tagline">The Future is Fuel</p>
+        <div class="social-links">
+            <a href="https://basescan.org/token/0x2d04456329Bb14B54471062092DDA942EF44A22E" target="_blank" title="Basescan">B</a>
+            <a href="https://app.uniswap.org/swap?chain=base&outputCurrency=0x2d04456329Bb14B54471062092DDA942EF44A22E" target="_blank" title="Uniswap">U</a>
+        </div>
+        <p class="disclaimer">
+            Cryptocurrency investments carry risk. Do your own research before investing. 
+            ZentraFuel makes no guarantees about future value. This is not financial advice.
+        </p>
+    </footer>
+
+    <script>
+        function copyAddress() {
+            const address = document.getElementById('tokenAddress').innerText;
+            navigator.clipboard.writeText(address);
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = 'Copied!';
+            setTimeout(() => {
+                btn.innerText = 'Copy Address';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
