@@ -787,6 +787,180 @@
             }
         }
 
+        /* About Section */
+        .about-section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--cyan);
+        }
+
+        .about-text p {
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-stat {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .about-stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--purple-light);
+        }
+
+        .about-stat-label {
+            color: var(--gray);
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        /* Tokenomics Section */
+        .tokenomics-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, rgba(26, 10, 46, 0.3) 0%, rgba(10, 10, 10, 0.5) 100%);
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tokenomics-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+        }
+
+        .tokenomics-card h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--cyan);
+        }
+
+        .tokenomics-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tokenomics-item:last-child {
+            border-bottom: none;
+        }
+
+        .tokenomics-label {
+            color: var(--gray);
+        }
+
+        .tokenomics-value {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .founder-card {
+            background: linear-gradient(180deg, rgba(45, 27, 78, 0.5) 0%, rgba(26, 10, 46, 0.5) 100%);
+            border: 2px solid var(--purple-light);
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: 40px;
+        }
+
+        .founder-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--purple-light), var(--cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin: 0 auto 24px;
+        }
+
+        .founder-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .founder-title {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .founder-bio {
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .founder-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .founder-links a {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .founder-links a:hover {
+            background: var(--purple-light);
+        }
+
         /* FAQ Section */
         .faq-section {
             padding: 100px 20px;
@@ -859,12 +1033,12 @@
             <span class="logo-text">ZentraFuel</span>
         </div>
         <nav class="nav-links">
+            <a href="#about">About</a>
             <a href="#features">Features</a>
-            <a href="#tiers">Holder Tiers</a>
-            <a href="#burns">Burns</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#tiers">Tiers</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#faq">FAQ</a>
-            <a href="#how-to-buy">Buy</a>
         </nav>
         <a href="https://app.uniswap.org/swap?chain=base&outputCurrency=0x2d04456329Bb14B54471062092DDA942EF44A22E" class="buy-btn" target="_blank">Buy ZFUEL</a>
     </header>
@@ -914,6 +1088,48 @@
         </div>
     </section>
 
+    <section class="about-section" id="about">
+        <h2 class="section-title">The ZentraFuel Story</h2>
+        <p class="section-subtitle">Built different. Built to last.</p>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Why We Built This</h3>
+                <p>
+                    The crypto space is filled with empty promises - tokens with no utility, anonymous teams, 
+                    and projects that vanish overnight. ZentraFuel was created to be different.
+                </p>
+                <p>
+                    We believe in transparency, community ownership, and building real value. Not through hype, 
+                    but through scarcity mechanics that actually work: fixed supply, regular burns, and rewards 
+                    for those who believe in the long-term vision.
+                </p>
+                <p>
+                    Launched in January 2026 on Base blockchain, ZentraFuel represents a new approach to 
+                    community-driven tokens. One where the founder is accessible, the code is verified, 
+                    and every decision is made with holders in mind.
+                </p>
+            </div>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="about-stat-value">Jan 2026</div>
+                    <div class="about-stat-label">Launch Date</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-value">Base</div>
+                    <div class="about-stat-label">Blockchain</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-value">1M</div>
+                    <div class="about-stat-label">Max Supply</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-value">500K</div>
+                    <div class="about-stat-label">Target Supply</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="features" id="features">
         <h2 class="section-title">Why ZentraFuel?</h2>
         <p class="section-subtitle">More than just a token. A complete ecosystem designed for long-term value.</p>
@@ -947,6 +1163,94 @@
                 <div class="feature-icon">⚡</div>
                 <h3>Base Powered</h3>
                 <p>Built on Coinbase's L2 blockchain. Ethereum security with fraction-of-a-penny fees.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tokenomics-section" id="tokenomics">
+        <h2 class="section-title">Tokenomics</h2>
+        <p class="section-subtitle">Complete breakdown of ZFUEL token economics</p>
+        <div class="tokenomics-grid">
+            <div class="tokenomics-card">
+                <h3>📊 Token Details</h3>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Token Name</span>
+                    <span class="tokenomics-value">ZentraFuel</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Symbol</span>
+                    <span class="tokenomics-value">ZFUEL</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Blockchain</span>
+                    <span class="tokenomics-value">Base (Coinbase L2)</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Token Standard</span>
+                    <span class="tokenomics-value">ERC-20</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Decimals</span>
+                    <span class="tokenomics-value">18</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Launch Date</span>
+                    <span class="tokenomics-value">January 2026</span>
+                </div>
+            </div>
+            <div class="tokenomics-card">
+                <h3>💎 Supply & Scarcity</h3>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Max Supply</span>
+                    <span class="tokenomics-value">1,000,000 ZFUEL</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Circulating Supply</span>
+                    <span class="tokenomics-value">1,000,000 ZFUEL</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Burn Target</span>
+                    <span class="tokenomics-value">500,000 ZFUEL</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Mintable</span>
+                    <span class="tokenomics-value">No (Fixed)</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Burnable</span>
+                    <span class="tokenomics-value">Yes ✓</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Deflationary</span>
+                    <span class="tokenomics-value">Yes ✓</span>
+                </div>
+            </div>
+            <div class="tokenomics-card">
+                <h3>🔗 Contract Info</h3>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Contract Verified</span>
+                    <span class="tokenomics-value">Yes ✓</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Chain ID</span>
+                    <span class="tokenomics-value">8453</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">DEX</span>
+                    <span class="tokenomics-value">Uniswap V3</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Gas Fees</span>
+                    <span class="tokenomics-value">< $0.01</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Tx Speed</span>
+                    <span class="tokenomics-value">2-3 seconds</span>
+                </div>
+                <div class="tokenomics-item">
+                    <span class="tokenomics-label">Fair Launch</span>
+                    <span class="tokenomics-value">Yes ✓</span>
+                </div>
             </div>
         </div>
     </section>
@@ -1121,6 +1425,27 @@
                     <h3>Swap for ZFUEL</h3>
                     <p>Go to Uniswap, connect your wallet, paste the ZFUEL token address, and swap your ETH for ZFUEL!</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section" id="team">
+        <h2 class="section-title">Meet The Founder</h2>
+        <p class="section-subtitle">Real person. Real accountability. No anonymous teams.</p>
+        <div class="founder-card">
+            <div class="founder-avatar">WF</div>
+            <div class="founder-name">Wayne Franks</div>
+            <div class="founder-title">Creator & Lead Developer</div>
+            <p class="founder-bio">
+                I created ZentraFuel because I was tired of seeing the same story repeat in crypto: 
+                anonymous teams launching tokens, making promises, then disappearing. 
+                I wanted to build something different - a token with real mechanics, transparent leadership, 
+                and a community that actually owns the project. I'm here, I'm accessible, and I'm committed 
+                to making ZFUEL succeed. DMs are always open.
+            </p>
+            <div class="founder-links">
+                <a href="https://twitter.com/ZentraFuel" target="_blank">𝕏 Twitter</a>
+                <a href="mailto:founder@zentrafuel.com">✉️ Email</a>
             </div>
         </div>
     </section>
